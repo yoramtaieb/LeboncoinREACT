@@ -1,15 +1,16 @@
 import React from "react";
 import useSigninForm from "../auth/useSigninForm";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 export default function SignInForm() {
   const { connexion, handleChange, handleSubmit } = useSigninForm();
- 
 
   return (
     <div>
-      {connexion.isSubmitting ? <Redirect to="/leboncoin/home" /> :
-        (<div>
+      {connexion.isSubmitting ? (
+        <Redirect to="/leboncoin/home" />
+      ) : (
+        <div>
           <h2>Connexion</h2>
           <form onSubmit={handleSubmit}>
             <input
@@ -26,12 +27,12 @@ export default function SignInForm() {
               type="password"
               placeholder="Mot de passe"
             />
-            <button disabled={connexion.isSubmitting} type="submit" >
+            <button disabled={connexion.isSubmitting} type="submit">
               Envoyer
             </button>
           </form>
         </div>
-    )}
+      )}
     </div>
   );
 }

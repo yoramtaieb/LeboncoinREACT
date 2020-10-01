@@ -23,7 +23,10 @@ export default function useSigninForm() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const result = await axios.post(`http://localhost:5000/leboncoin/signin`, connexion);
+      const result = await axios.post(
+        `http://localhost:5000/leboncoin/signin`,
+        connexion
+      );
       if (result.status === 200) {
         console.log("bien connecté", result.status);
         setConnexion({

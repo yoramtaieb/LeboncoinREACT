@@ -29,8 +29,11 @@ export default function useSignupForm() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const result = await axios.post(`http://localhost:5000/leboncoin/signup`, inputs);
-      if (result.status === 201) {
+      const result = await axios.post(
+        `http://localhost:5000/leboncoin/signup`,
+        inputs
+      );
+      if (result.status === 201 || result.status === 400) {
         console.log("bien inscrit", result.status);
         setInputs({
           ...inputs,
@@ -42,8 +45,8 @@ export default function useSignupForm() {
     } catch (error) {
       setInputs({
         ...inputs,
-          isSubmitting: true,
-          errorMessage: error.message || error.statusText,
+        isSubmitting: false,
+        errorMessage: error.message || error.statusText,
       });
     }
   };

@@ -1,13 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Nav() {
   return (
     <div>
-        <ul>
-            <li>Zbeub</li>
-            <li>Zbeub</li>
-            <li>Zbeub</li>
-        </ul>
+      <NavLink to="/leboncoin/signin">Zbeub</NavLink>
     </div>
   );
 }
