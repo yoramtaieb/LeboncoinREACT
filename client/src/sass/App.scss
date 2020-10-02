@@ -1,3 +1,5 @@
 @import "./config/mixins";
 @import "./base";
-@import './components/auth/signupForm'
+@import './components/auth/signupForm';
+@import './components/auth/signinForm';
+@import './NavLogin';

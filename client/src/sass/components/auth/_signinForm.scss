@@ -1,11 +1,6 @@
-.formSignup {
+.formSignin {
     display: flex;
     flex-direction: column;
-    &-titre {
-        color: white;
-        text-align: center;
-        padding: 10% 0 10% 0;
-    }
     &-divLigne1 {
         display: flex;
         justify-content: center;
@@ -25,11 +20,7 @@
         flex-direction: column;
     }
     &-input1,
-    &-input2,
-    &-input3,
-    &-input4,
-    &-input5,
-    &-input6 {
+    &-input2 {
         display: flex;
         justify-content: center;
         input {
@@ -40,21 +31,9 @@
             border: none;
             border-bottom: 1px solid white;
         }
-        select {
-            width: 80vw;
-            height: 4vh;
-            background-color: black;
-            color: #8E8E8E;
-            border: none;
-            border-bottom: 1px solid white;
-        }
     }
     &-input1,
-    &-input2,
-    &-input3,
-    &-input4,
-    &-input5,
-    &-input6 {
+    &-input2 {
         padding-bottom: 4%;
     }
     &-label {
@@ -77,13 +56,22 @@
             font-size: 16px;
         }
     }
-    &-inputDate {
-        &::before {
-            content: attr(placeholder) '';
-            white-space: pre;
+    &-paraFinal {
+        color: white;
+        text-align: center;
+        padding-top: 8%;
+        p {
+            padding-bottom: 3%;
+            font-weight: bold;
         }
-        &:focus::before {
-            content: ' ' !important;
+        button {
+            background: white;
+            border-radius: 40px;
+            height: 4vh;
+            width: 50vw;
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
         }
     }
     &-divIcon {
