@@ -8,7 +8,6 @@ export default function useSignupForm() {
     lastName: "",
     email: "",
     password: "",
-    // description: "",
     birthday: "",
     role: "",
     isSubmitting: false,

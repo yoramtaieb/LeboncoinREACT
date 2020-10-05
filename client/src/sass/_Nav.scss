@@ -1,0 +1,30 @@
+.navBarGeneral {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    width: 100vw;
+    background-color: #f0F0F0;
+    &-home {
+        padding: 2% 0 1% 0;
+        &-link {
+            text-decoration: none;
+            color: black;
+        }
+    }
+    &-connexion {
+        padding: 2% 0 1% 0;
+        &-link {
+            text-decoration: none;
+            color: black;
+        }
+    }
+    &-inscription {
+        padding: 2% 0 1% 0;
+        &-link {
+            text-decoration: none;
+            color: black;
+        }
+    }
+}

@@ -8,10 +8,10 @@ import { Switch, Route } from "react-router-dom";
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/leboncoin/signup" component={SignUpForm} />
-      <Route path="/leboncoin/signin" component={SignInForm} />
-      <Route path="/leboncoin/home" component={Home} />
-      <Route path="/leboncoin" component={Main} />
+      <Route exact path="/leboncoin" component={Main} />
+      <Route exact path="/leboncoin/signup" component={SignUpForm} />
+      <Route exact path="/leboncoin/home" component={Home} />
+      <Route exact path="/leboncoin/signin" component={SignInForm} />
     </Switch>
   );
 }

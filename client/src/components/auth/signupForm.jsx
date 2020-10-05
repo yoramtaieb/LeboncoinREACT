@@ -5,6 +5,7 @@ import NavLogin from "../NavLogin";
 import instaIcon from "../../assets/favicon/instagram.svg";
 import fbIcon from "../../assets/favicon/facebook.svg";
 import twitterIcon from "../../assets/favicon/twitter.svg";
+import Header from "../Nav";
 
 export default function SignUpForm() {
   const { inputs, handleInputChange, handleSubmit } = useSignupForm();
@@ -132,6 +133,7 @@ export default function SignUpForm() {
           </div>
         </div>
       )}
+      <Header />
     </>
   );
 }

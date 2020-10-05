@@ -5,6 +5,7 @@ import NavLogin from "../NavLogin";
 import instaIcon from "../../assets/favicon/instagram.svg";
 import fbIcon from "../../assets/favicon/facebook.svg";
 import twitterIcon from "../../assets/favicon/twitter.svg";
+import Header from "../pages/Header";
 
 export default function SignInForm() {
   const { connexion, handleChange, handleSubmit } = useSigninForm();
@@ -30,7 +31,7 @@ export default function SignInForm() {
                 onChange={handleChange}
                 value={connexion.email}
                 type="email"
-                placeholder=" Entrez votre email "
+                placeholder="Entrez votre email"
               />
             </div>
             <label htmlFor="password" className="formSignin-label">
@@ -42,7 +43,7 @@ export default function SignInForm() {
                 onChange={handleChange}
                 value={connexion.password}
                 type="password"
-                placeholder=" Entrez votre mot de passe"
+                placeholder="Entrez votre mot de passe"
               />
             </div>
             <div className="formSignin-buttonDiv">
@@ -83,6 +84,7 @@ export default function SignInForm() {
               <img src={twitterIcon} alt="LogoTwitter" />
             </Link>
           </div>
+          <Header />
         </div>
       )}
     </>
