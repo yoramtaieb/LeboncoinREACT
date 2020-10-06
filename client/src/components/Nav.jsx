@@ -13,15 +13,6 @@ export default function Nav() {
           <h4>Accueil</h4>
         </NavLink>
       </div>
-      <div className="navBarGeneral-connexion">
-        <NavLink
-          to="/leboncoin/signin"
-          className="navBarGeneral-connexion-link"
-        >
-          <img src={logoConnexion} alt="logoConnexion" />
-          <h4>Connexion</h4>
-        </NavLink>
-      </div>
       <div className="navBarGeneral-inscription">
         <NavLink
           to="/leboncoin/signup"
@@ -29,6 +20,15 @@ export default function Nav() {
         >
           <img src={logoInsc} alt="logoInsc" />
           <h4>Inscription</h4>
+        </NavLink>
+      </div>
+      <div className="navBarGeneral-connexion">
+        <NavLink
+          to="/leboncoin/signin"
+          className="navBarGeneral-connexion-link"
+        >
+          <img src={logoConnexion} alt="logoConnexion" />
+          <h4>Connexion</h4>
         </NavLink>
       </div>
     </div>

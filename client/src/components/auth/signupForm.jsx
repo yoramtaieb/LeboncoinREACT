@@ -1,11 +1,11 @@
 import React from "react";
 import useSignupForm from "../auth/useSignupForm";
 import { Redirect, Link } from "react-router-dom";
-import NavLogin from "../NavLogin";
+import Return from "../Return";
 import instaIcon from "../../assets/favicon/instagram.svg";
 import fbIcon from "../../assets/favicon/facebook.svg";
 import twitterIcon from "../../assets/favicon/twitter.svg";
-import Header from "../Nav";
+import Nav from "../Nav";
 
 export default function SignUpForm() {
   const { inputs, handleInputChange, handleSubmit } = useSignupForm();
@@ -13,13 +13,13 @@ export default function SignUpForm() {
   console.log(whiteSpace);
   return (
     <>
-      <NavLogin titleLogin="Inscription" />
+      <Return titleLogin="Inscription" />
       {inputs.isSubmitting ? (
         <Redirect to="/leboncoin/signin" />
       ) : (
         <div className="formSignup">
           <h2 className="formSignup-titre">
-            Inscrivez-vous gratuitement pour profiter des produits
+            Inscrivez-vous gratuitement pour profiter des ventes
           </h2>
           <div className="formSignup-divLigne1">
             <hr className="formSignup-ligne1" />
@@ -87,11 +87,11 @@ export default function SignUpForm() {
                 onChange={handleInputChange}
                 value={inputs.birthday}
                 type="Date"
-                placeholder={`Entrez votre date de naissance ${whiteSpace}`}
+                placeholder={`Entrez votre date de naissance${whiteSpace}`}
               />
             </div>
             <label htmlFor="Role" className="formSignup-label">
-              Role
+              Rôle
             </label>
             <div className="formSignup-input6">
               <select
@@ -99,6 +99,7 @@ export default function SignUpForm() {
                 onChange={handleInputChange}
                 value={inputs.role}
               >
+                <option value="">--Choississez un rôle--</option>
                 <option value="Vendeur">Vendeur</option>
                 <option value="Acheteur">Acheteur</option>
               </select>
@@ -133,7 +134,7 @@ export default function SignUpForm() {
           </div>
         </div>
       )}
-      <Header />
+      <Nav />
     </>
   );
 }

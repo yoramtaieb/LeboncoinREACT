@@ -2,6 +2,8 @@
 @import "./base";
 @import './components/auth/signupForm';
 @import './components/auth/signinForm';
-@import './NavLogin';
+@import './Return';
 @import './Nav';
-@import './Search'
+@import './NavLogin';
+@import './Search';
+@import './config/Error404';

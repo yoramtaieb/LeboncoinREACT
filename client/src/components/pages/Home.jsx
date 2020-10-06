@@ -1,6 +1,12 @@
 import React from "react";
-// import Search from "../Search";
+import NavLogin from "../NavLogin";
+import Search from "../Search";
 
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <NavLogin />
+      <Search />
+    </div>
+  );
 }

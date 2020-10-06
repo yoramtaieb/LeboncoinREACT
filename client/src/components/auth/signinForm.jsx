@@ -1,23 +1,26 @@
 import React from "react";
 import useSigninForm from "../auth/useSigninForm";
 import { Redirect, Link } from "react-router-dom";
-import NavLogin from "../NavLogin";
+import Return from "../Return";
 import instaIcon from "../../assets/favicon/instagram.svg";
 import fbIcon from "../../assets/favicon/facebook.svg";
 import twitterIcon from "../../assets/favicon/twitter.svg";
-import Header from "../pages/Header";
+import Nav from "../Nav";
 
 export default function SignInForm() {
   const { connexion, handleChange, handleSubmit } = useSigninForm();
 
   return (
     <>
-      <NavLogin titleLogin="Connexion" />
+      <Return titleLogin="Connexion" />
       {connexion.isSubmitting ? (
         <Redirect to="/leboncoin/home" />
       ) : (
         <div className="formSignin">
-          <h2 className="formSignin-titre">Connexion</h2>
+          <h2 className="formSignin-titre">
+            Connectez-vous pour <br /> accéder aux ventes
+          </h2>
+
           <div className="formSignin-divLigne1">
             <hr className="formSignin-ligne1" />
           </div>
@@ -84,7 +87,7 @@ export default function SignInForm() {
               <img src={twitterIcon} alt="LogoTwitter" />
             </Link>
           </div>
-          <Header />
+          <Nav />
         </div>
       )}
     </>

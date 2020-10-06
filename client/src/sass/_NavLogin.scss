@@ -1,14 +1,30 @@
-.return {
-    padding: 5% 0 0 5%;
-}
-
-.navSignup {
-    color: white;
+.navBarLogin {
+    position: fixed;
+    bottom: 0;
     display: flex;
-    justify-content: center;
-    &-title {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    justify-content: space-around;
+    text-align: center;
+    width: 100vw;
+    background-color: #f0F0F0;
+    &-profil {
+        padding: 2% 0 1% 0;
+        &-link {
+            text-decoration: none;
+            color: black;
+        }
+    }
+    &-product {
+        padding: 2% 0 1% 0;
+        &-link {
+            text-decoration: none;
+            color: black;
+        }
+    }
+    &-deconnexion {
+        padding: 2% 0 1% 0;
+        &-link {
+            text-decoration: none;
+            color: black;
+        }
     }
 }

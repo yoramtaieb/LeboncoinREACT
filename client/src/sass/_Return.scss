@@ -1,0 +1,14 @@
+.return {
+    padding: 5% 0 0 5%;
+}
+
+.navSignup {
+    color: white;
+    display: flex;
+    justify-content: center;
+    &-title {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}

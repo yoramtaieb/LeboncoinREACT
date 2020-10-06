@@ -32,30 +32,26 @@
     &-input6 {
         display: flex;
         justify-content: center;
+        padding-bottom: 4%;
         input {
             width: 80vw;
             height: 4vh;
             background-color: black;
-            color: #8E8E8E;
+            color: #fe6e14;
             border: none;
             border-bottom: 1px solid white;
+            &::placeholder {
+                color: #fe6e14;
+            }
         }
         select {
             width: 80vw;
             height: 4vh;
             background-color: black;
-            color: #8E8E8E;
+            color: #fe6e14;
             border: none;
             border-bottom: 1px solid white;
         }
-    }
-    &-input1,
-    &-input2,
-    &-input3,
-    &-input4,
-    &-input5,
-    &-input6 {
-        padding-bottom: 4%;
     }
     &-label {
         padding-left: 10%;
@@ -67,7 +63,7 @@
         justify-content: center;
         padding-top: 1%;
         &-button {
-            background: #FE6E14;
+            background: #fe6e14;
             border-radius: 40px;
             height: 4vh;
             width: 38vw;
@@ -78,18 +74,25 @@
         }
     }
     &-inputDate {
+        &::-webkit-inner-spin-button,
+        &::-webkit-calendar-picker-indicator {
+            -webkit-appearance: none;
+            position: absolute;
+            right: 0;
+            opacity: 0;
+        }
         &::before {
-            content: attr(placeholder) '';
+            content: attr(placeholder) "";
             white-space: pre;
         }
         &:focus::before {
-            content: ' ' !important;
+            content: " " !important;
         }
     }
     &-divIcon {
         display: flex;
         justify-content: flex-end;
-        padding: 8% 10% 20% 0;
+        padding: 8% 10% 25% 0;
         &-imgIcon {
             padding-right: 3%;
         }

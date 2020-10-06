@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import "./sass/App.scss";
 import AuthContext from "./components/context/Auth";
-import Header from "./components/pages/Header";
+// import Header from "./components/pages/Header";
 import Routes from "./components/Routes.jsx";
 // import Footer from "./components/pages/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -44,7 +44,7 @@ export default function App() {
   return (
     <Router>
       <AuthContext.Provider value={authValue}>
-        <Header />
+        {/* <Header /> */}
         <Routes />
         {/* <Footer /> */}
       </AuthContext.Provider>
