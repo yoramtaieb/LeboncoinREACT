@@ -1,20 +1,17 @@
 import React from "react";
 import useSigninForm from "../auth/useSigninForm";
 import { Redirect, Link } from "react-router-dom";
-import Return from "../Return";
-import instaIcon from "../../assets/favicon/instagram.svg";
-import fbIcon from "../../assets/favicon/facebook.svg";
-import twitterIcon from "../../assets/favicon/twitter.svg";
-import Nav from "../Nav";
+import Return from "../pages/Return";
+import Nav from "../pages/Nav";
 
 export default function SignInForm() {
   const { connexion, handleChange, handleSubmit } = useSigninForm();
 
   return (
     <>
-      <Return titleLogin="Connexion" />
+      <Return titleLogin="Connexion" imgArrow={true} />
       {connexion.isSubmitting ? (
-        <Redirect to="/leboncoin/home" />
+        <Redirect to="/leboncoin/home/seller" />
       ) : (
         <div className="formSignin">
           <h2 className="formSignin-titre">
@@ -49,6 +46,11 @@ export default function SignInForm() {
                 placeholder="Entrez votre mot de passe"
               />
             </div>
+            {connexion.errorMessage && (
+              <span className="formSignin-error">
+                {connexion.errorMessage.data.description}
+              </span>
+            )}
             <div className="formSignin-buttonDiv">
               <button
                 disabled={connexion.isSubmitting}
@@ -66,25 +68,6 @@ export default function SignInForm() {
             <p>Vous n'avez pas de compte ?</p>
             <Link to="/leboncoin/signup">
               <button>Je n'ai pas de compte</button>
-            </Link>
-          </div>
-          <div className="formSignin-divIcon">
-            <Link
-              className="formSignin-divIcon-imgIcon"
-              href="https://www.instagram.com/leboncoin/?hl=fr"
-              target="_blank"
-            >
-              <img src={instaIcon} alt="LogoInsta" />
-            </Link>
-            <Link
-              className="formSignin-divIcon-imgIcon"
-              href="https://www.facebook.com/leboncoin-1565057520410527"
-              target="_blank"
-            >
-              <img src={fbIcon} alt="LogoFb" />
-            </Link>
-            <Link to="https://twitter.com/leboncoin" target="_blank">
-              <img src={twitterIcon} alt="LogoTwitter" />
             </Link>
           </div>
           <Nav />

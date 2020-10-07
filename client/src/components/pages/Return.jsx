@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import arrowIcon from "../assets/favicon/arrow.svg";
-import lebIcon from "../assets/favicon/Vector.svg";
+import arrowIcon from "../../assets/favicon/arrow.svg";
+import lebIcon from "../../assets/favicon/Vector.svg";
 
-export default function NavLogin({ titleLogin }) {
+export default function Return({ title, router = "/leboncoin", imgArrow }) {
   return (
     <>
       <div className="return">
-        <Link to="/leboncoin">
-          <img src={arrowIcon} alt="arrowIcon" />
+        <Link to={`${router}`}>
+          {imgArrow ? <img src={`${arrowIcon}`} alt="arrowIcon" /> : null}
         </Link>
       </div>
       <div className="navSignup">
@@ -16,7 +16,7 @@ export default function NavLogin({ titleLogin }) {
           <Link to="/leboncoin">
             <img src={lebIcon} alt="lebIcon" />
           </Link>
-          <h1>{titleLogin}</h1>
+          <h1>{title}</h1>
         </div>
       </div>
     </>

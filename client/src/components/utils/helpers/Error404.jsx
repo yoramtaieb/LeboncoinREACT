@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import arrowIcon from "../../../assets/favicon/arrow.svg";
 import error404 from "../../../assets/img/error404.png";
+
 export default function Error404() {
   return (
     <div className="error">

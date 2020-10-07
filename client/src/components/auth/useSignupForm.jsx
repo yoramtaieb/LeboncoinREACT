@@ -14,9 +14,9 @@ export default function useSignupForm() {
     errorMessage: null,
   });
 
-  const handleInputChange = (event) => {
+  const handleInputChange = async (event) => {
     event.persist();
-    setInputs((inputs) => ({
+    await setInputs((inputs) => ({
       ...inputs,
       [event.target.name]: event.target.value,
     }));
@@ -44,10 +44,12 @@ export default function useSignupForm() {
       setInputs({
         ...inputs,
         isSubmitting: false,
-        errorMessage: error.message || error.statusText,
+        errorMessage: error.response,
       });
     }
   };
+
+  console.log(inputs);
 
   return {
     handleSubmit,

@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import AuthContext from "../context/Auth";
+import { useHistory } from "react-router-dom";
 
 export default function useSigninForm() {
   const [connexion, setConnexion] = useState({
@@ -8,11 +9,14 @@ export default function useSigninForm() {
     password: "",
     isSubmitting: false,
     errorMessage: null,
+    role: "",
   });
 
-  const handleChange = (event) => {
+  const history = useHistory();
+
+  const handleChange = async (event) => {
     const { name, value } = event.target;
-    setConnexion((connexion) => ({
+    await setConnexion((connexion) => ({
       ...connexion,
       [name]: value,
     }));
@@ -34,13 +38,18 @@ export default function useSigninForm() {
           isSubmitting: true,
           errorMessage: null,
         });
-        return dispatch({ type: "SIGNIN", payload: result });
+        dispatch({ type: "SIGNIN", payload: result });
+        if (result.data.user.role === "Vendeur") {
+          history.push("/leboncoin/home/seller");
+        } else {
+          history.push("/leboncoin/home/buyer");
+        }
       }
     } catch (error) {
       setConnexion({
         ...connexion,
         isSubmitting: false,
-        errorMessage: error.message || error.statusText,
+        errorMessage: error.response,
       });
     }
   };

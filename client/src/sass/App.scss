@@ -1,9 +1,9 @@
-@import "./config/mixins";
-@import "./base";
+@import "./components/config/mixins.scss";
+@import "./components/config/base.scss";
 @import './components/auth/signupForm';
 @import './components/auth/signinForm';
-@import './Return';
-@import './Nav';
-@import './NavLogin';
-@import './Search';
-@import './config/Error404';
+@import './components/pages/Return';
+@import './components/pages/Nav';
+@import './components/roleNav/NavBuySell';
+@import './components/recherche/Search';
+@import './components/config/Error404';

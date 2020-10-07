@@ -1,19 +1,15 @@
 import React from "react";
 import useSignupForm from "../auth/useSignupForm";
 import { Redirect, Link } from "react-router-dom";
-import Return from "../Return";
-import instaIcon from "../../assets/favicon/instagram.svg";
-import fbIcon from "../../assets/favicon/facebook.svg";
-import twitterIcon from "../../assets/favicon/twitter.svg";
-import Nav from "../Nav";
+import Return from "../pages/Return";
+import Nav from "../pages/Nav";
 
 export default function SignUpForm() {
   const { inputs, handleInputChange, handleSubmit } = useSignupForm();
-  const whiteSpace = " ".repeat(500);
-  console.log(whiteSpace);
+
   return (
     <>
-      <Return titleLogin="Inscription" />
+      <Return titleLogin="Inscription" imgArrow={true} />
       {inputs.isSubmitting ? (
         <Redirect to="/leboncoin/signin" />
       ) : (
@@ -87,7 +83,6 @@ export default function SignUpForm() {
                 onChange={handleInputChange}
                 value={inputs.birthday}
                 type="Date"
-                placeholder={`Entrez votre date de naissance${whiteSpace}`}
               />
             </div>
             <label htmlFor="Role" className="formSignup-label">
@@ -104,6 +99,11 @@ export default function SignUpForm() {
                 <option value="Acheteur">Acheteur</option>
               </select>
             </div>
+            {inputs.errorMessage && (
+              <span className="formSignup-error">
+                {inputs.errorMessage.data.description}
+              </span>
+            )}
             <div className="formSignup-buttonDiv">
               <button type="submit" className="formSignup-buttonDiv-button">
                 S'inscrire
@@ -113,23 +113,10 @@ export default function SignUpForm() {
           <div className="formSignup-divLigne2">
             <hr className="formSignup-ligne2" />
           </div>
-          <div className="formSignup-divIcon">
-            <Link
-              className="formSignup-divIcon-imgIcon"
-              href="https://www.instagram.com/leboncoin/?hl=fr"
-              target="_blank"
-            >
-              <img src={instaIcon} alt="LogoInsta" />
-            </Link>
-            <Link
-              className="formSignup-divIcon-imgIcon"
-              href="https://www.facebook.com/leboncoin-1565057520410527"
-              target="_blank"
-            >
-              <img src={fbIcon} alt="LogoFb" />
-            </Link>
-            <Link href="https://twitter.com/leboncoin" target="_blank">
-              <img src={twitterIcon} alt="LogoTwitter" />
+          <div className="formSignup-paraFinal">
+            <p>Vous avez déjà un compte ?</p>
+            <Link to="/leboncoin/signin">
+              <button>J'ai déjà un compte</button>
             </Link>
           </div>
         </div>
