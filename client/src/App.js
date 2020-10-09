@@ -1,18 +1,21 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect, useState } from "react";
+import axios from "axios";
 import "./sass/App.scss";
 import AuthContext from "./components/context/Auth";
+import UserContext from "./components/context/User"
 // import Header from "./components/pages/Header";
 import Routes from "./components/Routes.jsx";
 // import Footer from "./components/pages/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const initialState = {
-  isAuthenticated: !!localStorage.getItem("token"),
-  token: localStorage.getItem("token") || {},
+  isAuthenticated: false,
   user: null,
+  token: null,
 };
+
 const reducer = (state, action) => {
-  console.log("ICI ACTION :", action);
+ console.log("ICI ACTION :", action);
   switch (action.type) {
     case "SIGNIN":
       localStorage.setItem("token", action.payload.data.token);
@@ -20,6 +23,7 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: true,
         token: action.payload.data.token,
+        user: action.payload
       };
     case "LOGOUT":
       localStorage.clear();
@@ -27,6 +31,12 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: false,
         token: null,
+      };
+      case "LOAD_USER":
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload,
       };
     default:
       return state;
@@ -41,13 +51,45 @@ export default function App() {
     dispatch,
   };
 
+  const [user, setUser]= useState([]);
+  const userValue = {
+    user,
+    setUser,
+  };
+  
+
+
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem("token");
+    
+      if (token) {
+        const result = await axios(`http://localhost:5000/leboncoin/user/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(result.data)
+        dispatch({
+          type: "LOAD_USER",
+          payload: result.data,
+        });
+      }
+    };
+    fetchUser();
+  }, []);
+
   return (
     <Router>
       <AuthContext.Provider value={authValue}>
+        <UserContext.Provider value={userValue}>
         {/* <Header /> */}
         <Routes />
         {/* <Footer /> */}
+         </UserContext.Provider>
       </AuthContext.Provider>
+     
     </Router>
   );
 }

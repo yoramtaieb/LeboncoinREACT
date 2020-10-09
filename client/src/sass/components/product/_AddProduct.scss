@@ -1,0 +1,115 @@
+.formProduct {
+    display: flex;
+    flex-direction: column;
+    &-titre {
+        color: white;
+        text-align: center;
+        padding: 10% 0 10% 0;
+    }
+    &-divLigne1 {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 10%;
+    }
+    &-divLigne2 {
+        display: flex;
+        justify-content: center !important;
+        padding-top: 10%;
+    }
+    &-ligne1,
+    &-ligne2 {
+        width: 85%;
+    }
+    &-preview {
+        padding-left: 10%;
+        min-height: 50vw;
+        max-height: 90vw;
+        display: flex;
+        padding-bottom: 4%;
+        justify-content: center;
+        flex-direction: column;
+        &-image {
+            min-width: 90%;
+            max-width: 90%;
+            min-height: 20vw;
+            max-height: 90vw;
+            object-fit: fill;
+            margin-top: 2%;
+        }
+    }
+    &-formGen {
+        display: flex;
+        flex-direction: column;
+        &-label1 {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+            &-img {
+                padding-left: 2%;
+            }
+        }
+        &-label2,
+        &-label3,
+        &-label4,
+        &-label5,
+        &-label6 {
+            padding-left: 10%;
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+        }
+    }
+    &-input1 {
+        display: none;
+    }
+    &-input2,
+    &-input3,
+    &-input4,
+    &-input5,
+    &-input6 {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 4%;
+        input {
+            width: 80vw;
+            height: 4vh;
+            background-color: black;
+            color: #fe6e14;
+            border: none;
+            border-bottom: 1px solid white;
+            &::placeholder {
+                color: #fe6e14;
+            }
+        }
+        select {
+            width: 80vw;
+            height: 4vh;
+            background-color: black;
+            color: #fe6e14;
+            border: none;
+            border-bottom: 1px solid white;
+        }
+    }
+    &-buttonDiv {
+        display: flex;
+        justify-content: center;
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 4%;
+        padding-bottom: 30%;
+        &-buttonDiv2 {
+            &-button {
+                background: #fe6e14;
+                border-radius: 40px;
+                height: 4vh;
+                width: 42vw;
+                border: none;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+            }
+        }
+    }
+}

@@ -10,7 +10,7 @@ import Error404 from "../components/utils/helpers/Error404";
 import Buyer from "./role/Buyer";
 import Seller from "./role/Seller";
 import { Switch, Route } from "react-router-dom";
-// import { PrivateRoute } from "../components/utils/PrivateRoute";
+// import PrivateRoute from "../components/utils/PrivateRoute";
 
 export default function Routes() {
   return (

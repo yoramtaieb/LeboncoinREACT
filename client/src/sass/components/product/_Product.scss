@@ -1,0 +1,29 @@
+.product {
+    padding-bottom: 50%;
+    padding-left: 1%;
+    &-map {
+        display: flex;
+        &-preview {
+            padding-bottom: 3%;
+            &-image {
+                height: 130px;
+                object-fit: cover;
+                width: 200px;
+                border-radius: 10px 0 0 10px;
+            }
+        }
+        &-champs {
+            width: 45%;
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+            padding: 1% 0 0 2%;
+            background-color: #131313;
+            border-radius: 0 10px 10px 0;
+            h4,
+            h5 {
+                color: #fe6e14;
+            }
+        }
+    }
+}

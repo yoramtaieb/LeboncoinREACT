@@ -9,7 +9,7 @@ export default function SignUpForm() {
 
   return (
     <>
-      <Return titleLogin="Inscription" imgArrow={true} />
+      <Return title="Inscription" imgArrow={true} />
       {inputs.isSubmitting ? (
         <Redirect to="/leboncoin/signin" />
       ) : (

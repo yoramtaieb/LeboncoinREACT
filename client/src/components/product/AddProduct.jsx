@@ -5,7 +5,8 @@ import axios from "axios";
 import Resizer from "react-image-file-resizer";
 import Return from "../pages/Return";
 import NavProduct from "../productNav/NavProduct";
-// import imgTest from "../../assets/favicon/product.svg";
+import logoProduct from "../../assets/img/le_bon_coin_logo.png";
+import plusLogo from "../../assets/favicon/plusProduct.svg";
 
 export default function AddProduct() {
   const history = useHistory();
@@ -15,15 +16,18 @@ export default function AddProduct() {
     idCategory: parseInt("1"),
     name: "",
     description: "",
-    price: parseInt("0"),
+    price: parseInt(""),
     image: "",
+    isPosted: false,
+    errorMessage: null,
   });
 
   const [productImage, setProductImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(logoProduct);
 
-  const handleChange = (event) => {
-    let { name, value } = event.target;
-    setProduct({
+  const handleChange = async (event) => {
+    const { name, value } = event.target;
+    await setProduct({
       ...product,
       [name]: value,
     });
@@ -41,7 +45,7 @@ export default function AddProduct() {
         0,
         (compressedFile) => {
           setProductImage({ image: compressedFile });
-          // setPreviewImage(URL.createObjectURL(compressedFile));
+          setPreviewImage(URL.createObjectURL(compressedFile));
         },
         "blob",
         750,
@@ -63,21 +67,34 @@ export default function AddProduct() {
       formData.append("name", product.name);
       formData.append("description", product.description);
       formData.append("price", product.price);
-
+      console.log(formData)
       const options = {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       };
-      await axios.post(
+      const result = await axios.post(
         "http://localhost:5000/leboncoin/product",
         formData,
         options
       );
-      history.push("/leboncoin/home/seller/product/all");
+
+      if (result.status === 201) {
+        console.log("article bien posté", result.status);
+        setProduct({
+          ...product,
+          isPosted: true,
+          errorMessage: null,
+        });
+        history.push("/leboncoin/home/seller/product/all");
+      }
     } catch (error) {
-      history.push("/error");
+      setProduct({
+        ...product,
+        isPosted: false,
+        errorMessage: error.response,
+      });
     }
   };
 
@@ -89,32 +106,53 @@ export default function AddProduct() {
         router="/leboncoin/home/seller"
         imgArrow={true}
       />
-      <div>
-        <form onSubmit={onSubmit}>
-          <div>
-            {/* <img
-              src={previewImage}
-              alt="Prévisualisation de l'illustration de profile du DJ"
-            /> */}
-            <label htmlFor="file" className="preview_label">
-              <input
-                className="preview_input"
-                type="file"
-                name="image"
-                id="file"
-                onChange={handleChangeFile}
-                required
-              />
-            </label>
-          </div>
+      <div className="formProduct">
+        <h2 className="formProduct-titre">
+          Déposer une annonce <br /> sur la plateforme
+        </h2>
+        <div className="formProduct-divLigne1">
+          <hr className="formProduct-ligne1" />
+        </div>
 
-          <label htmlFor="idCity">
-            Villes
+        <form onSubmit={onSubmit} className="formProduct-formGen">
+          <div className="formProduct-preview">
+            <div className="formProduct-preview2">
+              <label htmlFor="file" className="formProduct-formGen-label1">
+                Choisir une image
+                <img
+                  src={plusLogo}
+                  alt="iconePlus"
+                  className="formProduct-formGen-label1-img"
+                />
+                <div className="formProduct-input1">
+                  <input
+                    className="preview_input"
+                    type="file"
+                    name="image"
+                    id="file"
+                    onChange={handleChangeFile}
+                    required
+                  />
+                </div>
+              </label>
+              <div className="formProduct-preview1">
+                <img
+                  src={previewImage}
+                  alt="Prévisualisation du produit"
+                  className="formProduct-preview-image"
+                />
+              </div>
+            </div>
+          </div>
+          <label htmlFor="idCity" className="formProduct-formGen-label2">
+           Régions
+          </label>
+          <div className="formProduct-input2">
             <select
               name="idCity"
-              value={product.idCity}
               onChange={handleChange}
             >
+              <option value="">--Choississez une région--</option>
               <option value="1">Alsace</option>
               <option value="2">Aquittaine</option>
               <option value="3">Auverge</option>
@@ -138,48 +176,76 @@ export default function AddProduct() {
               <option value="21">Provence-Alpes-Côtes d'Azur</option>
               <option value="22">Rhônes-Alpes</option>
             </select>
-          </label>
-          <label htmlFor="idCategory">
+          </div>
+          <label htmlFor="idCategory" className="formProduct-formGen-label3">
             Catégories
+          </label>
+          <div className="formProduct-input3">
             <select
               name="idCategory"
-              value={product.idCategory}
               onChange={handleChange}
             >
+              <option value="">--Choississez une catégorie--</option>
               <option value="1">Informatique</option>
               <option value="2">Voiture</option>
               <option value="3">Ameublement</option>
               <option value="4">Vente Immo</option>
             </select>
-          </label>
-          <label htmlFor="name">
+          </div>
+          <label htmlFor="name" className="formProduct-formGen-label4">
             Nom
+          </label>
+          <div className="formProduct-input4">
             <input
               name="name"
               onChange={handleChange}
               value={product.name}
               type="text"
+              placeholder="Ajoutez un nom"
             />
-          </label>
-          <label htmlFor="description">
+          </div>
+          <label htmlFor="description" className="formProduct-formGen-label5">
             Description
+          </label>
+          <div className="formProduct-input5">
             <input
               name="description"
               onChange={handleChange}
               value={product.descripton}
               type="text"
+              placeholder="Ajoutez une description"
             />
-          </label>
-          <label htmlFor="price">
+          </div>
+          <label htmlFor="price" className="formProduct-formGen-label6">
             Prix
+          </label>
+          <div className="formProduct-input6">
             <input
               name="price"
               onChange={handleChange}
               value={product.price}
               type="number"
+              placeholder="Ajoutez un prix"
             />
-          </label>
-          <button type="submit">Envoyer</button>
+          </div>
+          {product.errorMessage && (
+            <span className="formSignin-error">
+              {product.errorMessage.data.description}
+            </span>
+          )}
+          <div className="formProduct-buttonDiv">
+            <div className="formProduct-divLigne2">
+              <hr className="formProduct-ligne2" />
+            </div>
+            <div className="formProduct-buttonDiv-buttonDiv2">
+              <button
+                type="submit"
+                className="formProduct-buttonDiv-buttonDiv2-button"
+              >
+                Ajouter le produit
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </>

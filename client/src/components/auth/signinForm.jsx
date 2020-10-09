@@ -9,7 +9,7 @@ export default function SignInForm() {
 
   return (
     <>
-      <Return titleLogin="Connexion" imgArrow={true} />
+      <Return title="Connexion" imgArrow={true} />
       {connexion.isSubmitting ? (
         <Redirect to="/leboncoin/home/seller" />
       ) : (
@@ -17,7 +17,6 @@ export default function SignInForm() {
           <h2 className="formSignin-titre">
             Connectez-vous pour <br /> accéder aux ventes
           </h2>
-
           <div className="formSignin-divLigne1">
             <hr className="formSignin-ligne1" />
           </div>
