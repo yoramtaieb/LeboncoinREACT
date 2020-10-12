@@ -1,0 +1,60 @@
+.updateProduct {
+    display: flex;
+    flex-direction: column;
+    &-close {
+        width: 77vw;
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 10%;
+    }
+    &-formGen {
+        display: flex;
+        flex-direction: column;
+    }
+    &-input1,
+    &-input2,
+    &-input3,
+    &-input4,
+    &-input5,
+    &-input6 {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 4%;
+        input {
+            width: 75vw;
+            height: 4vh;
+            background-color: black;
+            color: #fe6e14;
+            border: none;
+            border-bottom: 1px solid white;
+            &::placeholder {
+                color: #fe6e14;
+            }
+        }
+    }
+    &-input4,
+    &-input5 {
+        select {
+            width: 75vw;
+            height: 4vh;
+            background-color: black;
+            color: #fe6e14;
+            border: none;
+            border-bottom: 1px solid white;
+        }
+    }
+    &-label {
+        font-weight: 600;
+        font-size: 15px;
+        color: white;
+    }
+}
+
+.test {
+    width: 75vw;
+    height: 4vh;
+    background-color: black;
+    color: #fe6e14;
+    border: none;
+    border-bottom: 1px solid white;
+}

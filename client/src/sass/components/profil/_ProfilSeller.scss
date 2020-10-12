@@ -1,0 +1,30 @@
+.seller {
+    &-map {
+        &-champs {
+            padding: 0 10% 0 10%;
+            &-firstName,
+            &-lastName,
+            &-email,
+            &-birthday,
+            &-role {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid white;
+                padding-bottom: 1%;
+            }
+            h3 {
+                font-size: 15px;
+                color: white;
+                padding-top: 4%;
+                font-weight: 600;
+            }
+            h4 {
+                color: #fe6e14;
+                font-size: 14px;
+                font-weight: 500;
+                padding-top: 4%;
+            }
+        }
+    }
+}

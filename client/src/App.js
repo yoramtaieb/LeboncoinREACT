@@ -3,6 +3,7 @@ import axios from "axios";
 import "./sass/App.scss";
 import AuthContext from "./components/context/Auth";
 import UserContext from "./components/context/User"
+import reducer from './components/reducer/Reducer'
 // import Header from "./components/pages/Header";
 import Routes from "./components/Routes.jsx";
 // import Footer from "./components/pages/Footer";
@@ -12,35 +13,6 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   token: null,
-};
-
-const reducer = (state, action) => {
- console.log("ICI ACTION :", action);
-  switch (action.type) {
-    case "SIGNIN":
-      localStorage.setItem("token", action.payload.data.token);
-      return {
-        ...state,
-        isAuthenticated: true,
-        token: action.payload.data.token,
-        user: action.payload
-      };
-    case "LOGOUT":
-      localStorage.clear();
-      return {
-        ...state,
-        isAuthenticated: false,
-        token: null,
-      };
-      case "LOAD_USER":
-      return {
-        ...state,
-        isAuthenticated: true,
-        user: action.payload,
-      };
-    default:
-      return state;
-  }
 };
 
 export default function App() {
@@ -57,9 +29,6 @@ export default function App() {
     setUser,
   };
   
-
-
-
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");

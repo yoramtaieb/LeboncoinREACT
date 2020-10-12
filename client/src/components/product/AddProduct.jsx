@@ -27,6 +27,7 @@ export default function AddProduct() {
 
   const handleChange = async (event) => {
     const { name, value } = event.target;
+    console.log(value)
     await setProduct({
       ...product,
       [name]: value,
@@ -52,9 +53,10 @@ export default function AddProduct() {
         750
       );
     } catch (error) {
-      console.log(error);
+      
     }
   };
+  
 
   const token = localStorage.getItem("token");
   const onSubmit = async (event) => {
@@ -79,7 +81,6 @@ export default function AddProduct() {
         formData,
         options
       );
-
       if (result.status === 201) {
         console.log("article bien posté", result.status);
         setProduct({
