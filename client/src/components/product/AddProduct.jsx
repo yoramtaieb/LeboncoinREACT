@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Resizer from "react-image-file-resizer";
@@ -24,10 +24,40 @@ export default function AddProduct() {
 
   const [productImage, setProductImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(logoProduct);
+  const [allCities, setAllCities] = useState([]);
+  const [allCategories, setAllCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios(
+          "http://localhost:5000/leboncoin/cities/all"
+        );
+        setAllCities(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios(
+          "http://localhost:5000/leboncoin/categories/all"
+        );
+        setAllCategories(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleChange = async (event) => {
     const { name, value } = event.target;
-    console.log(value)
+    console.log(value);
     await setProduct({
       ...product,
       [name]: value,
@@ -52,11 +82,8 @@ export default function AddProduct() {
         750,
         750
       );
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
-  
 
   const token = localStorage.getItem("token");
   const onSubmit = async (event) => {
@@ -69,7 +96,7 @@ export default function AddProduct() {
       formData.append("name", product.name);
       formData.append("description", product.description);
       formData.append("price", product.price);
-      console.log(formData)
+      console.log(formData);
       const options = {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -145,54 +172,6 @@ export default function AddProduct() {
               </div>
             </div>
           </div>
-          <label htmlFor="idCity" className="formProduct-formGen-label2">
-           Régions
-          </label>
-          <div className="formProduct-input2">
-            <select
-              name="idCity"
-              onChange={handleChange}
-            >
-              <option value="">--Choississez une région--</option>
-              <option value="1">Alsace</option>
-              <option value="2">Aquittaine</option>
-              <option value="3">Auverge</option>
-              <option value="4">Basse-Normandie</option>
-              <option value="5">Bourgogne</option>
-              <option value="6">Bretagne</option>
-              <option value="7">Centre</option>
-              <option value="8">Champagne-Ardenne</option>
-              <option value="9">Corse</option>
-              <option value="10">Franche-Comté</option>
-              <option value="11">Haute-Normandie</option>
-              <option value="12">Île-de-France</option>
-              <option value="13">Languedoc-Roussillon</option>
-              <option value="14">Limousin</option>
-              <option value="15">Lorraine</option>
-              <option value="16">Midi-Pyrénées</option>
-              <option value="17">Nord-Pas-de-Calais</option>
-              <option value="18">Pays de la Loire</option>
-              <option value="19">Picardie</option>
-              <option value="20">Poitou-Charentes</option>
-              <option value="21">Provence-Alpes-Côtes d'Azur</option>
-              <option value="22">Rhônes-Alpes</option>
-            </select>
-          </div>
-          <label htmlFor="idCategory" className="formProduct-formGen-label3">
-            Catégories
-          </label>
-          <div className="formProduct-input3">
-            <select
-              name="idCategory"
-              onChange={handleChange}
-            >
-              <option value="">--Choississez une catégorie--</option>
-              <option value="1">Informatique</option>
-              <option value="2">Voiture</option>
-              <option value="3">Ameublement</option>
-              <option value="4">Vente Immo</option>
-            </select>
-          </div>
           <label htmlFor="name" className="formProduct-formGen-label4">
             Nom
           </label>
@@ -228,6 +207,32 @@ export default function AddProduct() {
               type="number"
               placeholder="Ajoutez un prix"
             />
+          </div>
+          <label htmlFor="idCategory" className="formProduct-formGen-label3">
+            Catégories
+          </label>
+          <div className="formProduct-input3">
+            <select name="idCategory" onChange={handleChange}>
+              <option value="">--Choisissez une catégorie--</option>
+              {allCategories.map((category, index) => (
+                <option key={index} value={`${category.id}`}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <label htmlFor="idCity" className="formProduct-formGen-label2">
+            Régions
+          </label>
+          <div className="formProduct-input2">
+            <select name="idCity" onChange={handleChange}>
+              <option value="">--Choisissez une région--</option>
+              {allCities.map((city, index) => (
+                <option key={index} value={`${city.id}`}>
+                  {city.name}
+                </option>
+              ))}
+            </select>
           </div>
           {product.errorMessage && (
             <span className="formSignin-error">

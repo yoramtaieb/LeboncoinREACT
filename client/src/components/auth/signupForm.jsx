@@ -94,7 +94,7 @@ export default function SignUpForm() {
                 onChange={handleInputChange}
                 value={inputs.role}
               >
-                <option value="">--Choississez un rôle--</option>
+                <option value="">--Choisissez un rôle--</option>
                 <option value="Vendeur">Vendeur</option>
                 <option value="Acheteur">Acheteur</option>
               </select>

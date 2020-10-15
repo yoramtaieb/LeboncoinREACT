@@ -1,5 +1,16 @@
 .product {
     padding-bottom: 40%;
+    &-error {
+        &-spanAll {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            &-span {
+                color: rgba(255, 0, 0, 0.877);
+                font-size: 17px;
+            }
+        }
+    }
     &-map {
         &-preview {
             text-align: center;

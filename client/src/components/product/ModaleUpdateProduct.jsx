@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import Resizer from "react-image-file-resizer";
+import logoProduct from "../../assets/img/le_bon_coin_logo.png";
+import plusLogo from "../../assets/favicon/plusProduct.svg";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -52,13 +55,50 @@ export default function ModaleUpdateProduct() {
     setOpen(false);
   };
 
+  const [product, setProduct] = useState({
+    idCity: parseInt("1"),
+    idCategory: parseInt("1"),
+    name: "",
+    description: "",
+    price: parseInt(""),
+    image: "",
+    isPosted: false,
+    errorMessage: null,
+  });
+  const [productImage, setProductImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(logoProduct);
+
+  const handleChange = async (event) => {
+    const { name, value } = event.target;
+    console.log(value);
+    await setProduct({
+      ...product,
+      [name]: value,
+    });
+  };
+
+  const handleChangeFile = async (event) => {
+    const [imageFile] = event.target.files;
+    try {
+      Resizer.imageFileResizer(
+        imageFile,
+        750,
+        1500,
+        "JPEG",
+        50,
+        0,
+        (compressedFile) => {
+          setProductImage({ image: compressedFile });
+          setPreviewImage(URL.createObjectURL(compressedFile));
+        },
+        "blob",
+        750,
+        750
+      );
+    } catch (error) {}
+  };
+
   return (
-    // <div>
-    //   <button type="submit" className="product-buttonUpDel">
-    //     {" "}
-    //     Modifier le produit{" "}
-    //   </button>
-    // </div>
     <div>
       <div>
         <button
@@ -85,6 +125,39 @@ export default function ModaleUpdateProduct() {
             </div>
             <div className="updateProduct">
               <form action="POST">
+                <div className="formProduct-preview">
+                  <div className="formProduct-preview2">
+                    <label
+                      htmlFor="file"
+                      className="formProduct-formGen-label1"
+                    >
+                      Choisir une image
+                      <img
+                        src={plusLogo}
+                        alt="iconePlus"
+                        className="formProduct-formGen-label1-img"
+                      />
+                      <div className="formProduct-input1">
+                        <input
+                          className="preview_input"
+                          type="file"
+                          name="image"
+                          id="file"
+                          onChange={handleChangeFile}
+                          required
+                        />
+                      </div>
+                    </label>
+                    <div className="formProduct-preview1">
+                      <img
+                        src={previewImage}
+                        alt="Prévisualisation du produit"
+                        className="formProduct-preview-image"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <label htmlFor="firstName" className="updateProduct-label">
                   Nom
                 </label>
@@ -129,7 +202,7 @@ export default function ModaleUpdateProduct() {
                     className="updateProduct-input4-select"
                   >
                     <option value="">
-                      --Choississez une nouvelle catégorie--
+                      --Choisissez une nouvelle catégorie--
                     </option>
                     <option value="1">Informatique</option>
                     <option value="2">Voiture</option>
@@ -143,9 +216,7 @@ export default function ModaleUpdateProduct() {
                 </label>
                 <div className="updateProduct-input5">
                   <select name="idCity" className="updateProduct-input5-select">
-                    <option value="">
-                      --Choississez une nouvelle région--
-                    </option>
+                    <option value="">--Choisissez une nouvelle région--</option>
                     <option value="1">Alsace</option>
                     <option value="2">Aquittaine</option>
                     <option value="3">Auverge</option>

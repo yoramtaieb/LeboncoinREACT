@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+// import { useHistory } from "react-router-dom";
+import axios from "axios";
+import ProductContext from "../context/Product";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -24,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid white",
     outline: "none",
   },
+  divButton: {
+    paddingBottom: "5%",
+  },
   button: {
     border: "none",
     borderRadius: "5px",
@@ -36,9 +42,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ModaleDeleteProduct() {
+export default function ModaleDeleteProduct({ product }) {
+  // const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const context = useContext(ProductContext);
 
   const handleOpen = () => {
     setOpen(true);
@@ -48,13 +56,29 @@ export default function ModaleDeleteProduct() {
     setOpen(false);
   };
 
+  const token = localStorage.getItem("token");
+
+  const handleDelete = async (event) => {
+    try {
+      event.preventDefault();
+      const test = context.products.filter((item) => item.id !== product.id);
+      context.setProducts(test);
+      await axios.delete(
+        `http://localhost:5000/leboncoin/product/delete/${product.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      handleClose();
+      // history.push("/leboncoin/home/seller/product/all");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    //   <div>
-    //     <button type="submit" className="product-buttonUpDel">
-    //       Supprimer le produit
-    //     </button>
-    //   </div>
-    // );
     <>
       <div>
         <div>
@@ -88,7 +112,11 @@ export default function ModaleDeleteProduct() {
                 </p>
               </div>
               <div className={classes.divButton}>
-                <button className={classes.button} type="submit">
+                <button
+                  className={classes.button}
+                  type="submit"
+                  onClick={handleDelete}
+                >
                   Supprimer
                 </button>
               </div>
