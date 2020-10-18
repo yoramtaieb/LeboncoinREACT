@@ -1,8 +1,7 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import Resizer from "react-image-file-resizer";
+import axios from "axios";
 import Return from "../pages/Return";
 import NavProduct from "../productNav/NavProduct";
 import logoProduct from "../../assets/img/le_bon_coin_logo.png";

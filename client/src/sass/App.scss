@@ -1,5 +1,6 @@
 @import "./components/config/mixins.scss";
 @import "./components/config/base.scss";
+
 @import "./components/auth/signupForm";
 @import "./components/auth/signinForm";
 @import "./components/pages/Return";
@@ -13,3 +14,5 @@
 @import "./components/profil/ProfilBuyer";
 @import "./components/user/ModaleUpdateUser";
 @import "./components/product/ModaleUpdateProduct";
+@import "./components/categories/Categories";
+@import "./components/map/Map";

@@ -5,7 +5,6 @@ import logoHome from "../../assets/favicon/home.svg";
 import profilLogo from "../../assets/favicon/user.svg";
 import plusLogo from "../../assets/favicon/plus.svg";
 import powerLogo from "../../assets/favicon/power-button.svg";
-// import productLogo from "../../assets/favicon/product.svg";
 
 export default function NavSeller() {
   const { state, dispatch } = useContext(AuthContext);
@@ -48,16 +47,6 @@ export default function NavSeller() {
           <h4>Ajouter</h4>
         </NavLink>
       </div>
-{/* 
-      <div className="navBarLogin-profil">
-        <NavLink
-          to="/leboncoin/home/seller/product/all"
-          className="navBarLogin-profil-link"
-        >
-          <img src={productLogo} alt="logoProfil" className="logoLeb" />
-          <h4>Produits</h4>
-        </NavLink>
-      </div> */}
 
       <div className="navBarLogin-deconnexion">
         <NavLink

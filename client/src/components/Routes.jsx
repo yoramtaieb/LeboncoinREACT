@@ -1,4 +1,6 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
+
 import Main from "./pages/Main";
 import SignUpForm from "../components/auth/signupForm";
 import SignInForm from "../components/auth/signinForm";
@@ -9,7 +11,8 @@ import Product from "../components/product/Product";
 import Error404 from "../components/utils/helpers/Error404";
 import Buyer from "./role/Buyer";
 import Seller from "./role/Seller";
-import { Switch, Route } from "react-router-dom";
+import ProductCategories from "./product/ProductCategories";
+import ProductMap from "./product/ProductMap";
 // import PrivateRoute from "../components/utils/PrivateRoute";
 
 export default function Routes() {
@@ -39,6 +42,16 @@ export default function Routes() {
         exact
         path="/leboncoin/home/seller/product/all"
         component={Product}
+      />
+      <Route
+        exact
+        path="/leboncoin/home/product/:name"
+        component={ProductCategories}
+      />
+      <Route
+        exact
+        path="/leboncoin/home/product/:name"
+        component={ProductMap}
       />
       <Route exact path="*" component={Error404} />
     </Switch>

@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../context/Auth";
 import logoHome from "../../assets/favicon/home.svg";
-
 import profilLogo from "../../assets/favicon/user.svg";
 import powerLogo from "../../assets/favicon/power-button.svg";
 

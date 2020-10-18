@@ -1,6 +1,6 @@
 import React from "react";
-import useSignupForm from "../auth/useSignupForm";
 import { Redirect, Link } from "react-router-dom";
+import useSignupForm from "../auth/useSignupForm";
 import Return from "../pages/Return";
 import Nav from "../pages/Nav";
 

@@ -55,27 +55,27 @@ export default function ModaleUpdateProduct() {
     setOpen(false);
   };
 
-  const [product, setProduct] = useState({
-    idCity: parseInt("1"),
-    idCategory: parseInt("1"),
-    name: "",
-    description: "",
-    price: parseInt(""),
-    image: "",
-    isPosted: false,
-    errorMessage: null,
-  });
-  const [productImage, setProductImage] = useState(null);
+  // const [product, setProduct] = useState({
+  //   idCity: parseInt("1"),
+  //   idCategory: parseInt("1"),
+  //   name: "",
+  //   description: "",
+  //   price: parseInt(""),
+  //   image: "",
+  //   isPosted: false,
+  //   errorMessage: null,
+  // });
+  const [, setProductImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(logoProduct);
 
-  const handleChange = async (event) => {
-    const { name, value } = event.target;
-    console.log(value);
-    await setProduct({
-      ...product,
-      [name]: value,
-    });
-  };
+  // const handleChange = async (event) => {
+  //   const { name, value } = event.target;
+  //   console.log(value);
+  //   await setProduct({
+  //     ...product,
+  //     [name]: value,
+  //   });
+  // };
 
   const handleChangeFile = async (event) => {
     const [imageFile] = event.target.files;

@@ -1,30 +1,40 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import "moment-timezone";
 import "moment/locale/fr";
-import ProductContext from "../context/Product";
 import axios from "axios";
 import Return from "../pages/Return";
 import NavSeller from "../roleNav/NavSeller";
+import NavBuyer from "../roleNav/NavBuyer";
 
-import ModaleDeleteProduct from "./ModaleDeleteProduct";
-import ModaleUpdatedProduct from "./ModaleUpdateProduct";
-
-export default function Product() {
+export default function ProductCategories() {
+  const [productCategory, setProductCategory] = useState([]);
   const [productError, setProductError] = useState("");
-  const context = useContext(ProductContext);
+  const { name } = useParams();
 
-  const [, setCategorie] = useState("");
-  const [, setCity] = useState("");
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem("token");
+      const foundUser = await axios(`http://localhost:5000/leboncoin/user/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(foundUser.data);
+    };
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await axios("http://localhost:5000/leboncoin/product");
-        context.setProducts(result.data);
-        console.log(result.data);
-        setCategorie(result.data.Category);
-        setCity(result.data.City);
+        const result = await axios(
+          `http://localhost:5000/leboncoin/product/categorie/${name}`
+        );
+        setProductCategory(result.data);
+        console.log("===>", result);
       } catch (productError) {
         setProductError(productError.response.data);
       }
@@ -36,21 +46,27 @@ export default function Product() {
   return (
     <>
       <div>
-        <NavSeller />
-        <Return
-          title="Mes produits"
-          router="/leboncoin/home/seller/product"
-          imgArrow={true}
-        />
+        {user.role === "Vendeur" ? (
+          <Return
+            title="Catégorie"
+            imgArrow={true}
+            router="/leboncoin/home/seller"
+          />
+        ) : (
+          <Return
+            title="Catégorie"
+            imgArrow={true}
+            router="/leboncoin/home/buyer"
+          />
+        )}
       </div>
-
+      <div>{user.role === "Vendeur" ? <NavSeller /> : <NavBuyer />}</div>
       <h2 className="formProduct-titre">
-        Liste de tous mes <br /> produits mis en ligne
+        Liste des produits <br /> par catégories
       </h2>
       <div className="formProduct-divLigne1">
         <hr className="formProduct-ligne1" />
       </div>
-
       <div className="product-error">
         {productError !== "" ? (
           <div className="product-error-spanAll">
@@ -63,9 +79,8 @@ export default function Product() {
           </div>
         ) : null}
       </div>
-
       <div className="product">
-        {context.products.map((product) => (
+        {productCategory.map((product) => (
           <div key={product.id} className="product-map">
             <div className="product-map-preview">
               <img
@@ -100,12 +115,12 @@ export default function Product() {
               </div>
               <div className="product-map-champs-category">
                 <h5>
-                  Catégorie : <span>{product["Category.name"]}</span>
+                  Catégorie : <span>{product.Category.name}</span>
                 </h5>
               </div>
               <div className="product-map-champs-city">
                 <h5>
-                  Région : <span>{product["City.name"]}</span>
+                  Région : <span>{product.City.name}</span>
                 </h5>
               </div>
               <div className="product-map-champs-createdAt">
@@ -119,14 +134,6 @@ export default function Product() {
                     {product.createdAt}
                   </Moment>
                 </span>
-              </div>
-              <div className="product-map-champs-button">
-                <div className="product-map-champs-button-delete">
-                  <ModaleDeleteProduct product={product} key={product.id} />
-                </div>
-                <div className="product-map-champs-button-update">
-                  <ModaleUpdatedProduct />
-                </div>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Moment from "react-moment";
 import "moment-timezone";
+import axios from "axios";
 import NavBuyer from "../roleNav/NavBuyer";
 import Return from "../pages/Return";
 import ModaleDeleteUser from "../user/ModaleDeleteUser";
@@ -36,14 +36,22 @@ export default function ProfilBuyer() {
         <div className="buyer-map">
           <div className="buyer-map-champs">
             <div className="buyer-map-champs-firstName">
-              <h3>Prénom :</h3>
-              <h4 className="buyer-map-champs-firstName-h4">
+              <h3 style={{ textTransform: "capitalize" }}>Prénom :</h3>
+              <h4
+                className="buyer-map-champs-firstName-h4"
+                style={{ textTransform: "capitalize" }}
+              >
                 {user.firstName}
               </h4>
             </div>
             <div className="buyer-map-champs-lastName">
               <h3>Nom : </h3>
-              <h4 className="buyer-map-champs-lastName-h4">{user.lastName}</h4>
+              <h4
+                className="buyer-map-champs-lastName-h4"
+                style={{ textTransform: "capitalize" }}
+              >
+                {user.lastName}
+              </h4>
             </div>
             <div className="buyer-map-champs-email">
               <h3>Email :</h3>
