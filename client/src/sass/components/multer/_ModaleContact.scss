@@ -1,0 +1,172 @@
+.updateProduct {
+    display: flex;
+    flex-direction: column;
+    &-close {
+        width: 77vw;
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 10%;
+        @include media(tablet) {
+            font-size: 25px;
+        }
+    }
+    &-error {
+        padding-bottom: 3%;
+        &-spanAll {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            &-span {
+                color: rgba(255, 0, 0, 0.877);
+                font-size: 15px;
+                @include media(tablet) {
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+    &-formGen {
+        display: flex;
+        flex-direction: column;
+        &-label1 {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+            @include media(tablet) {
+                font-size: 20px;
+            }
+            &-img {
+                @include media(tablet) {
+                    height: 3vh;
+                }
+            }
+        }
+    }
+    &-input7 {
+        display: none;
+    }
+    &-preview {
+        padding-left: 10%;
+        min-height: 50vw;
+        max-height: 90vw;
+        display: flex;
+        padding-bottom: 4%;
+        justify-content: center;
+        flex-direction: column;
+        @include media(tablet) {
+            min-height: 50vw;
+            max-height: 10vw;
+        }
+        &-image {
+            min-width: 90%;
+            max-width: 90%;
+            min-height: 20vw;
+            max-height: 90vw;
+            object-fit: fill;
+            margin-top: 2%;
+            @include media(tablet) {
+                min-width: 90%;
+                max-width: 90%;
+                min-height: 40vw;
+                max-height: 45vw;
+                object-fit: cover;
+            }
+        }
+    }
+    &-input2 {
+        textarea {
+            background-color: black;
+            width: 75vw;
+            height: 10vh;
+            resize: none;
+            border: none;
+            outline: none;
+            color: #fe6e14;
+            border-bottom: 1px solid white;
+            padding-top: 1%;
+            @include media(tablet) {
+                font-size: 20px;
+            }
+            &::placeholder {
+                color: #fe6e14;
+            }
+        }
+    }
+    &-input1,
+    &-input2,
+    &-input3,
+    &-input4,
+    &-input5,
+    &-input6 {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 4%;
+        input {
+            width: 75vw;
+            height: 4vh;
+            background-color: black;
+            color: #fe6e14;
+            border: none;
+            border-bottom: 1px solid white;
+            @include media(tablet) {
+                font-size: 20px;
+            }
+            &::placeholder {
+                color: #fe6e14;
+            }
+        }
+    }
+    &-input4,
+    &-input5 {
+        select {
+            width: 75vw;
+            height: 4vh;
+            background-color: black;
+            color: #fe6e14;
+            border: none;
+            border-bottom: 1px solid white;
+            &:hover {
+                cursor: pointer;
+            }
+            @include media(tablet) {
+                font-size: 20px;
+            }
+        }
+    }
+    &-label {
+        font-weight: 600;
+        font-size: 15px;
+        color: white;
+        @include media(tablet) {
+            font-size: 20px;
+        }
+    }
+}
+
+.buttonCont {
+    &-buttonContact {
+        background: #fe6e14;
+        border-radius: 40px;
+        height: 4vh;
+        width: 55vw;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 5%;
+        &:hover {
+            cursor: pointer;
+        }
+        @include media(tablet) {
+            font-size: 25px;
+            width: 50vw;
+        }
+        @include media(desktop) {
+            margin-bottom: 2%;
+            font-size: 20px;
+            width: 24vw;
+        }
+    }
+}

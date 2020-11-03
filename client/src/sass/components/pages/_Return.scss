@@ -1,14 +1,31 @@
 .return {
     padding: 5% 0 0 5%;
+    @include media(desktop) {
+        width: 50vw;
+        padding-top: 17%;
+    }
+    &-imgArrow {
+        @include media(tablet) {
+            height: 3.5vh;
+        }
+    }
 }
 
 .navSignup {
-    color: white;
-    display: flex;
-    justify-content: center;
+    @include media(desktop) {
+        width: 50vw;
+    }
+    @include media(desktop) {}
+    h1 {
+        @include media(tablet) {
+            font-size: 40px;
+        }
+    }
     &-title {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+        &-imgLeb {
+            @include media(tablet) {
+                height: 5vh;
+            }
+        }
     }
 }

@@ -1,0 +1,49 @@
+.city {
+    padding-top: 10%;
+    padding-bottom: 40%;
+    text-align: center;
+    @include media(tablet) {
+        padding-bottom: 25%;
+    }
+    @include media(desktop) {
+        width: 50vw;
+        padding-bottom: 10%;
+    }
+    &-divImg {
+        min-height: 10vw;
+        max-height: 100vw;
+        &-img {
+            min-width: 95%;
+            max-width: 45%;
+            min-height: 30vw;
+            max-height: 70vw;
+            @include media(desktop) {
+                min-width: 20%;
+            }
+        }
+    }
+    &-all {
+        padding-top: 5%;
+        @include media(desktop) {
+            padding-top: 3%;
+        }
+        select {
+            background-color: black;
+            border: 2px solid white;
+            border-radius: 5px;
+            font-weight: bold;
+            height: 5vh;
+            color: white;
+            &:hover {
+                cursor: pointer;
+            }
+            @include media(tablet) {
+                width: 50vw;
+                font-size: 20px;
+            }
+            @include media(desktop) {
+                width: 25vw;
+            }
+        }
+    }
+}

@@ -1,11 +1,28 @@
 .updateUser {
     display: flex;
     flex-direction: column;
+    @include media(desktop) {
+        width: 50vw;
+    }
     &-close {
         width: 77vw;
         display: flex;
         justify-content: flex-end;
         padding-bottom: 10%;
+        p {
+            &:hover {
+                cursor: pointer;
+            }
+            @include media(tablet) {
+                font-size: 25px;
+            }
+        }
+    }
+    &-errorUpdateUser {
+        color: rgba(255, 0, 0, 0.877);
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
     }
     &-formGen {
         display: flex;
@@ -27,6 +44,9 @@
             color: #fe6e14;
             border: none;
             border-bottom: 1px solid white;
+            @include media(tablet) {
+                font-size: 18px;
+            }
             &::placeholder {
                 color: #fe6e14;
             }
@@ -36,5 +56,8 @@
         font-weight: 600;
         font-size: 15px;
         color: white;
+        @include media(tablet) {
+            font-size: 20px;
+        }
     }
 }

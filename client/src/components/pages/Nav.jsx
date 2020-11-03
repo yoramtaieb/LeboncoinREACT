@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logoHome from "../../assets/favicon/home.svg";
-import logoConnexion from "../../assets/favicon/login.svg";
-import logoInsc from "../../assets/favicon/forms.svg";
+import logoHome from "../assets/favicon/home.svg";
+import logoConnexion from "../assets/favicon/login.svg";
+import logoInsc from "../assets/favicon/forms.svg";
 
 export default function Nav() {
   return (

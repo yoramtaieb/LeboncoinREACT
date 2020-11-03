@@ -1,0 +1,97 @@
+.desktop {
+    padding-bottom: 20%;
+    @include media(tablet) {
+        padding-bottom: 20%;
+    }
+    @include media(desktop) {
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        float: right;
+        padding-bottom: 0;
+    }
+    &-return {
+        p {
+            @include media(desktop) {
+                padding-left: 10%;
+                padding-right: 5%;
+                color: white;
+            }
+        }
+        @include media(tablet) {
+            justify-content: center;
+        }
+    }
+    &-divImg {
+        min-height: 10vw;
+        max-height: 90vw;
+        text-align: center;
+        padding-top: 13%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        z-index: -20;
+        &-img {
+            min-width: 90%;
+            max-width: 90%;
+            min-height: 30vw;
+            max-height: 90vw;
+            border-radius: 10px;
+            background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 1));
+        }
+        p {
+            color: white;
+            position: absolute;
+            font-weight: bold;
+            font-size: 20px;
+            bottom: 0;
+            padding-bottom: 2%;
+            text-shadow: 0 0 10px black;
+            @include media(tablet) {
+                font-size: 37px;
+            }
+            @include media(desktop) {
+                font-size: 2.2em;
+            }
+        }
+    }
+    &-p {
+        text-align: center;
+        p {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 5% 0 2% 0;
+            @include media(tablet) {
+                font-size: 2em;
+            }
+            span {
+                color: #fe6e14;
+            }
+        }
+        &-img {
+            height: 3vh;
+            @include media(tablet) {
+                height: 4vh;
+            }
+        }
+    }
+    &-para {
+        padding: 5% 5% 10% 5%;
+        p {
+            color: #fe6e14;
+            padding: 5% 5% 5% 5%;
+            line-height: 1.2;
+            font-size: 1.1em;
+            text-align: center;
+            background: #141414;
+            border-radius: 12px;
+            @include media(tablet) {
+                font-size: 2em;
+            }
+            @include media(desktop) {
+                font-size: 1.4em;
+            }
+        }
+    }
+}

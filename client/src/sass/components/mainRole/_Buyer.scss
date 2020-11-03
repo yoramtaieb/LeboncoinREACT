@@ -1,0 +1,5 @@
+.buyerMain {
+    @include media(desktop) {
+        float: right;
+    }
+}

@@ -1,4 +1,8 @@
 .buyer {
+    @include media(desktop) {
+        width: 50vw;
+        float: right;
+    }
     &-map {
         &-champs {
             padding: 0 10% 0 10%;
@@ -18,17 +22,29 @@
                 color: white;
                 padding-top: 4%;
                 font-weight: 600;
+                @include media(tablet) {
+                    font-size: 20px;
+                }
             }
             h4 {
                 color: #fe6e14;
                 font-size: 14px;
                 font-weight: 500;
                 padding-top: 4%;
+                @include media(tablet) {
+                    font-size: 19px;
+                }
             }
         }
     }
     &-deleteUser {
         padding: 5% 0 0 40%;
+        @include media(tablet) {
+            padding-left: 52%;
+        }
+        @include media(desktop) {
+            padding-left: 43%;
+        }
         &-button {
             background: #fe6e14;
             border-radius: 40px;
@@ -38,10 +54,27 @@
             color: white;
             font-weight: bold;
             font-size: 14px;
+            &:hover {
+                cursor: pointer;
+            }
+            @include media(tablet) {
+                font-size: 20px;
+                width: 40vw;
+            }
+            @include media(desktop) {
+                width: 25vw;
+                height: 4vh;
+            }
         }
     }
     &-updateUser {
         padding: 2% 0 0 40%;
+        @include media(tablet) {
+            padding-left: 52%;
+        }
+        @include media(desktop) {
+            padding-left: 43%;
+        }
         &-button {
             background: #fe6e14;
             border-radius: 40px;
@@ -51,9 +84,32 @@
             color: white;
             font-weight: bold;
             font-size: 14px;
+            &:hover {
+                cursor: pointer;
+            }
+            @include media(tablet) {
+                font-size: 20px;
+                width: 40vw;
+            }
+            @include media(desktop) {
+                width: 25vw;
+                height: 4vh;
+            }
         }
     }
     &-p {
         text-align: center;
+        @include media(tablet) {
+            font-size: 26px;
+        }
+    }
+    &-modale {
+        padding-bottom: 25%;
+        @include media(tablet) {
+            padding-bottom: 20%;
+        }
+        @include media(desktop) {
+            padding-bottom: 10%;
+        }
     }
 }

@@ -1,10 +1,21 @@
 .formProduct {
     display: flex;
     flex-direction: column;
+    @include media(desktop) {
+        width: 50vw;
+        float: right;
+    }
     &-titre {
         color: white;
         text-align: center;
         padding: 10% 0 10% 0;
+        @include media(tablet) {
+            font-size: 30px;
+            padding: 10% 0 10% 0;
+        }
+        @include media(desktop) {
+            font-size: 30px;
+        }
     }
     &-divLigne1 {
         display: flex;
@@ -28,6 +39,9 @@
         padding-bottom: 4%;
         justify-content: center;
         flex-direction: column;
+        @include media(desktop) {
+            min-height: 40vw;
+        }
         &-image {
             min-width: 90%;
             max-width: 90%;
@@ -46,8 +60,17 @@
             font-weight: 600;
             font-size: 15px;
             color: white;
+            @include media(tablet) {
+                font-size: 20px;
+            }
             &-img {
                 padding-left: 2%;
+                &:hover {
+                    cursor: pointer;
+                }
+                @include media(tablet) {
+                    height: 3vh;
+                }
             }
         }
         &-label2,
@@ -59,6 +82,9 @@
             font-weight: 600;
             font-size: 15px;
             color: white;
+            @include media(tablet) {
+                font-size: 20px;
+            }
         }
     }
     &-input1 {
@@ -79,8 +105,17 @@
             color: #fe6e14;
             border: none;
             border-bottom: 1px solid white;
+            @include media(tablet) {
+                font-size: 20px;
+            }
+            @include media(desktop) {
+                width: 40vw;
+            }
             &::placeholder {
                 color: #fe6e14;
+                @include media(tablet) {
+                    font-size: 18px;
+                }
             }
         }
         select {
@@ -90,6 +125,15 @@
             color: #fe6e14;
             border: none;
             border-bottom: 1px solid white;
+            &:hover {
+                cursor: pointer;
+            }
+            @include media(tablet) {
+                font-size: 20px;
+            }
+            @include media(desktop) {
+                width: 40vw;
+            }
         }
     }
     &-buttonDiv {
@@ -99,6 +143,9 @@
         text-align: center;
         padding-top: 4%;
         padding-bottom: 30%;
+        @include media(desktop) {
+            padding-bottom: 10%;
+        }
         &-buttonDiv2 {
             &-button {
                 background: #fe6e14;
@@ -109,6 +156,15 @@
                 color: white;
                 font-weight: bold;
                 font-size: 16px;
+                &:hover {
+                    cursor: pointer;
+                }
+                @include media(tablet) {
+                    font-size: 20px;
+                }
+                @include media(desktop) {
+                    width: 20vw;
+                }
             }
         }
     }

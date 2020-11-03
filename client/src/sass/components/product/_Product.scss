@@ -1,6 +1,12 @@
 .product {
     padding-bottom: 40%;
+    @include media(desktop) {
+        width: 50vw;
+        float: right;
+        padding-bottom: 10%;
+    }
     &-error {
+        padding-bottom: 3%;
         &-spanAll {
             display: flex;
             align-items: center;
@@ -8,10 +14,28 @@
             &-span {
                 color: rgba(255, 0, 0, 0.877);
                 font-size: 17px;
+                @include media(tablet) {
+                    font-size: 25px;
+                }
             }
         }
     }
+    &-divLigne2 {
+        display: flex;
+        justify-content: center !important;
+        padding-top: 6%;
+        @include media(tablet) {
+            margin-bottom: -10%;
+        }
+        @include media(desktop) {
+            padding-bottom: 10%;
+        }
+    }
+    &-ligne2 {
+        width: 85%;
+    }
     &-map {
+        padding-bottom: 4%;
         &-preview {
             text-align: center;
             &-image {
@@ -25,9 +49,11 @@
         &-champs {
             background: #141414;
             margin: 0 5% 0 5%;
+            padding: 2% 0 0 2%;
             display: flex;
             flex-direction: column;
             color: #fe6e14;
+            border-radius: 0 0 15px 15px;
             &-name,
             &-price,
             &-description,
@@ -35,9 +61,17 @@
             &-city,
             &-createdAt {
                 padding-bottom: 2%;
+                h5 {
+                    @include media(tablet) {
+                        font-size: 22px;
+                    }
+                }
                 span {
                     color: white;
                     font-weight: 400;
+                    @include media(tablet) {
+                        font-size: 21px;
+                    }
                 }
             }
             &-createdAt {
@@ -51,7 +85,21 @@
             &-button {
                 display: flex;
                 justify-content: space-between;
-                padding: 2% 2%;
+                padding: 2% 0 2% 50%;
+                &:hover {
+                    cursor: pointer;
+                }
+                @include media(desktop) {
+                    width: 50vw;
+                    flex-direction: column;
+                    padding: 2% 0 2% 4%;
+                }
+            }
+            &-buttonMsg {
+                padding: 2% 0 2% 35%;
+                @include media(tablet) {
+                    padding: 2% 0 2% 40%;
+                }
             }
         }
     }
@@ -65,5 +113,14 @@
         font-weight: bold;
         font-size: 14px;
         margin-bottom: 5%;
+        &:hover {
+            cursor: pointer;
+        }
+        @include media(tablet) {
+            font-size: 20px;
+        }
+        @include media(desktop) {
+            margin-bottom: 2%;
+        }
     }
 }

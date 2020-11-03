@@ -2,11 +2,18 @@
     display: flex;
     flex-wrap: wrap;
     padding: 10% 0 0 3.3%;
+    @include media(desktop) {
+        width: 50vw;
+        justify-content: center;
+    }
     h1 {
         color: white;
         padding-bottom: 2%;
         font-size: 22px;
         width: 100%;
+        @include media(tablet) {
+            font-size: 33px;
+        }
     }
     .categorie-all {
         &-Informatique {
@@ -21,6 +28,10 @@
                 object-fit: cover;
                 border-radius: 5px;
                 background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 1));
+                @include media(desktop) {
+                    min-height: 15vw;
+                    margin-bottom: 3%;
+                }
             }
             &-para {
                 display: flex;
@@ -33,6 +44,12 @@
                     bottom: 0;
                     text-shadow: 0 0 10px black;
                     padding-bottom: 2%;
+                    @include media(tablet) {
+                        font-size: 30px;
+                    }
+                    @include media(desktop) {
+                        padding-bottom: 4%;
+                    }
                 }
             }
         }
@@ -48,6 +65,9 @@
                 object-fit: cover;
                 border-radius: 5px;
                 background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 1));
+                @include media(desktop) {
+                    min-height: 15vw;
+                }
             }
             &-para {
                 display: flex;
@@ -60,6 +80,9 @@
                     bottom: 0;
                     text-shadow: 0 0 10px black;
                     padding-bottom: 2%;
+                    @include media(tablet) {
+                        font-size: 30px;
+                    }
                 }
             }
         }
@@ -76,6 +99,9 @@
                 object-fit: cover;
                 border-radius: 5px;
                 background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 1));
+                @include media(desktop) {
+                    min-height: 15vw;
+                }
             }
             &-para {
                 display: flex;
@@ -88,6 +114,9 @@
                     bottom: 0;
                     text-shadow: 0 0 10px black;
                     padding-bottom: 2%;
+                    @include media(tablet) {
+                        font-size: 30px;
+                    }
                 }
             }
         }
@@ -104,6 +133,9 @@
                 object-fit: cover;
                 border-radius: 5px;
                 background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 1));
+                @include media(desktop) {
+                    min-height: 15vw;
+                }
             }
             &-para {
                 display: flex;
@@ -116,6 +148,9 @@
                     bottom: 0;
                     text-shadow: 0 0 10px black;
                     padding-bottom: 2%;
+                    @include media(tablet) {
+                        font-size: 30px;
+                    }
                 }
             }
         }

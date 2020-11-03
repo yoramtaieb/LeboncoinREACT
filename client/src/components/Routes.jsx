@@ -1,18 +1,17 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
-import Main from "./pages/Main";
-import SignUpForm from "../components/auth/signupForm";
-import SignInForm from "../components/auth/signinForm";
-import ProfilBuyer from "./profil/ProfilBuyer";
-import ProfilSeller from "./profil/ProfilSeller";
-import AddProduct from "../components/product/AddProduct";
-import Product from "../components/product/Product";
+import Main from "../components/pages/Main";
+import SignUpForm from "../components/molecules/auth/signupForm";
+import SignInForm from "../components/molecules/auth/signinForm";
+import ProfilBuyer from "../components/pages/profil/ProfilBuyer";
+import ProfilSeller from "../components/pages/profil/ProfilSeller";
+import AddProduct from "../components/pages/product/AddProduct";
+import Product from "../components/pages/product/Product";
 import Error404 from "../components/utils/helpers/Error404";
-import Buyer from "./role/Buyer";
-import Seller from "./role/Seller";
-import ProductCategories from "./product/ProductCategories";
-import ProductMap from "./product/ProductMap";
+import Buyer from "../components/molecules/role/Buyer";
+import Seller from "../components/molecules/role/Seller";
+import ProductCategories from "../components/pages/product/ProductCategories";
+import ProductCities from "../components/pages/product/ProductCities";
 // import PrivateRoute from "../components/utils/PrivateRoute";
 
 export default function Routes() {
@@ -45,13 +44,13 @@ export default function Routes() {
       />
       <Route
         exact
-        path="/leboncoin/home/product/:name"
+        path="/leboncoin/home/product/categorie/:name"
         component={ProductCategories}
       />
       <Route
         exact
-        path="/leboncoin/home/product/:name"
-        component={ProductMap}
+        path="/leboncoin/home/product/citie/:name"
+        component={ProductCities}
       />
       <Route exact path="*" component={Error404} />
     </Switch>

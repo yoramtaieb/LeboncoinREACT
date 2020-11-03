@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import AuthContext from "../context/Auth";
+import AuthContext from "../atoms/context/Auth";
 
 export default function ProtectedRoutes({ component: Component, ...rest }) {
   const { state } = useContext(AuthContext);

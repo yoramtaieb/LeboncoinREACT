@@ -1,13 +1,11 @@
 import React, { useReducer, useEffect, useState } from "react";
 import axios from "axios";
 import "./sass/App.scss";
-import AuthContext from "./components/context/Auth";
-import UserContext from "./components/context/User";
-import ProductContext from "./components/context/Product";
-import reducer from "./components/reducer/Reducer";
-// import Header from "./components/pages/Header";
+import AuthContext from "./components/atoms/context/Auth";
+import UserContext from "./components/atoms/context/User";
+import ProductContext from "./components/atoms/context/Product";
+import reducer from "./components/atoms/reducer/Reducer";
 import Routes from "./components/Routes.jsx";
-// import Footer from "./components/pages/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const initialState = {
@@ -17,7 +15,6 @@ const initialState = {
 };
 
 export default function App() {
-  // Authentification
   const [state, dispatch] = useReducer(reducer, initialState);
   const authValue = {
     state,
@@ -61,9 +58,7 @@ export default function App() {
       <AuthContext.Provider value={authValue}>
         <UserContext.Provider value={userValue}>
           <ProductContext.Provider value={productValue}>
-            {/* <Header /> */}
             <Routes />
-            {/* <Footer /> */}
           </ProductContext.Provider>
         </UserContext.Provider>
       </AuthContext.Provider>

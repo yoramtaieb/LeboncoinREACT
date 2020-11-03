@@ -1,4 +1,8 @@
 .seller {
+    @include media(desktop) {
+        width: 50vw;
+        float: right;
+    }
     &-map {
         &-champs {
             padding: 0 10% 0 10%;
@@ -18,13 +22,37 @@
                 color: white;
                 padding-top: 4%;
                 font-weight: 600;
+                @include media(tablet) {
+                    font-size: 20px;
+                }
             }
             h4 {
                 color: #fe6e14;
                 font-size: 14px;
                 font-weight: 500;
                 padding-top: 4%;
+                @include media(tablet) {
+                    font-size: 19px;
+                }
             }
         }
+    }
+    &-modale {
+        padding-bottom: 25%;
+        @include media(tablet) {
+            padding-bottom: 20%;
+        }
+        @include media(desktop) {
+            padding-bottom: 10%;
+        }
+    }
+}
+
+#buttonModale {
+    &:hover {
+        cursor: pointer;
+    }
+    @include media(tablet) {
+        font-size: 24px;
     }
 }
