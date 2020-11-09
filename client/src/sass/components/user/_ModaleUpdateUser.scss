@@ -1,9 +1,6 @@
 .updateUser {
     display: flex;
     flex-direction: column;
-    @include media(desktop) {
-        width: 50vw;
-    }
     &-close {
         width: 77vw;
         display: flex;
