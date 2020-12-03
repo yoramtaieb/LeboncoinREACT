@@ -79,6 +79,14 @@ export default function ProfilBuyer() {
               <h3>Rôle :</h3>
               <h4 className="buyer-map-champs-role-h4">{user.role}</h4>
             </div>
+            <div className="seller-map-champs-role">
+              <h3>Date de création :</h3>
+              <h4 className="seller-map-champs-role-h4">
+                <Moment locale="de" fromNow>
+                  {user.createdAt}
+                </Moment>
+              </h4>
+            </div>
           </div>
           <div className="formProduct-divLigne2">
             <hr className="formProduct-ligne2" />

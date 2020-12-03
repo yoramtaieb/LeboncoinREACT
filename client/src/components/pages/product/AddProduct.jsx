@@ -217,7 +217,7 @@ export default function AddProduct() {
             Catégories
           </label>
           <div className="formProduct-input3">
-            <select name="idCategory" onChange={handleChange}>
+            <select name="idCategory" onChange={handleChange} required>
               <option value="">--Choisissez une catégorie--</option>
               {allCategories.map((category, index) => (
                 <option key={index} value={`${category.id}`}>
@@ -230,7 +230,7 @@ export default function AddProduct() {
             Régions
           </label>
           <div className="formProduct-input2">
-            <select name="idCity" onChange={handleChange}>
+            <select name="idCity" onChange={handleChange} required>
               <option value="">--Choisissez une région--</option>
               {allCities.map((city, index) => (
                 <option key={index} value={`${city.id}`}>

@@ -12,7 +12,7 @@ import Buyer from "../components/molecules/role/Buyer";
 import Seller from "../components/molecules/role/Seller";
 import ProductCategories from "../components/pages/product/ProductCategories";
 import ProductCities from "../components/pages/product/ProductCities";
-// import PrivateRoute from "../components/utils/PrivateRoute";
+import PrivateRoute from "../components/utils/PrivateRoute";
 
 export default function Routes() {
   return (
@@ -20,34 +20,34 @@ export default function Routes() {
       <Route exact path="/leboncoin" component={Main} />
       <Route exact path="/leboncoin/signup" component={SignUpForm} />
       <Route exact path="/leboncoin/signin" component={SignInForm} />
-      <Route exact path="/leboncoin/home/seller" component={Seller} />
-      <Route exact path="/leboncoin/home/buyer" component={Buyer} />
-      <Route
+      <PrivateRoute exact path="/leboncoin/home/seller" component={Seller} />
+      <PrivateRoute exact path="/leboncoin/home/buyer" component={Buyer} />
+      <PrivateRoute
         exact
         path="/leboncoin/home/buyer/profil"
         component={ProfilBuyer}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/leboncoin/home/seller/profil"
         component={ProfilSeller}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/leboncoin/home/seller/product"
         component={AddProduct}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/leboncoin/home/seller/product/all"
         component={Product}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/leboncoin/home/product/categorie/:name"
         component={ProductCategories}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/leboncoin/home/product/citie/:name"
         component={ProductCities}
